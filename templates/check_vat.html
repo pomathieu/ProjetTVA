@@ -2,30 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Check VAT</title>
-    <script type="text/javascript">
-      function checkVat() {
-        var countryCode = document.getElementById('country_code').value;
-        var vatNumber = document.getElementById('vat_number').value;
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/check_vat?country_code=' + countryCode + '&vat_number=' + vatNumber);
-        xhr.onload = function() {
-          document.getElementById('result').innerHTML = xhr.responseText;
-        };
-        xhr.send();
-      }
-    </script>
+    <title>Check your European VAT number</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
   </head>
   <body>
-    <h1>Check VAT</h1>
-    <form onsubmit="checkVat(); return false;">
-      <label for="country_code">Country code:</label>
-      <input type="text" id="country_code" name="country_code" required><br>
-      <label for="vat_number">VAT number:</label>
-      <input type="text" id="vat_number" name="vat_number" required><br>
-      <input type="submit" value="Check VAT">
-    </form>
-    <div id="result"></div>
+    <div class="container">
+      <h1>Check VAT</h1>
+      <form onsubmit="checkVat(); return false;">
+        <label for="country_code">Country code:</label>
+        <input type="text" id="country_code" name="country_code" required autofocus ><br>
+        <label for="vat_number">VAT number:</label>
+        <input type="text" id="vat_number" name="vat_number" required autofocus><br>
+        <input type="submit" value="Check VAT">
+      </form>
+      <div id="result"></div>
+    </div>
+    <script type="text/javascript" src="/static/check_vat.js"></script>
   </body>
 </html>
