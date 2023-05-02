@@ -5,16 +5,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return 'Hello, World! I hope you are doing well ?'
+    return render_template('check_vat.html')
 
-@app.route('/check_vat', methods=['POST'])
+@app.route('/check_vat')
 def check_vat():
-    # Get the input data from the POST request
-    country_code = request.form['country_code']
-    vat_number = request.form['vat_number']
-    
+    # Get the input data from the GET request
+    country_code = request.args.get('country_code')
+    vat_number = request.args.get('vat_number')
+
     # Run the Java code with the input data and capture the output
-    command = ['java', '-cp', 'checkvat-1.0.3.jar', 'Main', country_code, vat_number]
+    command = ['java', '-cp', 'checkvat-1.0.3.jar', 'vatjava.Main', country_code, vat_number]
     try:
         output = subprocess.check_output(command, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
@@ -22,7 +22,7 @@ def check_vat():
         output = e.output
 
     # Decode the output to a string
-    result = output.decode('utf-8')
+    result = output.decode('utf-8').strip()
 
-    # Render the HTML template and pass the result to it
-    return render_template('check_vat.html', result=result)
+    # Return the result as plain text
+    return result
