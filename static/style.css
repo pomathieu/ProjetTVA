@@ -2,6 +2,8 @@ body {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1920px-Flag_of_Europe.svg.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+
   }
   h1 {
     color: white;
