@@ -2,6 +2,7 @@ body {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1920px-Flag_of_Europe.svg.png");
     background-repeat: no-repeat;
     background-size: cover;
+   
   }
   h1 {
     color: white;
@@ -12,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 5%;
+    margin-top: 20%;
   }
   label {
     color: white;

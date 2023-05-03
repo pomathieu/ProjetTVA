@@ -1,0 +1,9 @@
+src/main/java/vatjava/CheckVatResponse.class
+src/main/java/vatjava/CheckVatApproxResponse.class
+src/main/java/vatjava/CheckVat.class
+src/main/java/vatjava/CheckVatService.class
+src/main/java/vatjava/package-info.class
+src/main/java/vatjava/ObjectFactory.class
+src/main/java/vatjava/CheckVatApprox.class
+src/main/java/vatjava/CheckVatPortType.class
+src/main/java/vatjava/Main.class

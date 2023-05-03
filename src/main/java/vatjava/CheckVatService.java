@@ -1,5 +1,5 @@
 
-package vatjava;
+package src.main.java.vatjava;
 
 import java.net.MalformedURLException;
 import java.net.URL;
