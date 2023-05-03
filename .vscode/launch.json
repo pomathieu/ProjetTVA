@@ -4,12 +4,12 @@
     // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        
         {
             "type": "java",
             "name": "Main",
             "request": "launch",
-            "mainClass": "vatjava.Main",
+            "mainClass": "src.main.java.vatjava.Main",
             "projectName": "ProjetTVA_efed8dc7"
         },
     ]

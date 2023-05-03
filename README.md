@@ -1,5 +1,5 @@
 # Check the validity of a European VAT Number
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://www.youtube.com/watch?v=ewYbAlpCHUI
 #### Description:
 The objective of this website is to allow persons involved in the intra-Community supply of goods or of services to obtain confirmation of the validity of the VAT identification number of any specified person, in accordance to article 31 of Council Regulation (EC) No. 904/2010 of 7 October 2010. 
 

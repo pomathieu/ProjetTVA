@@ -1,4 +1,4 @@
-package vatjava;
+package src.main.java.vatjava;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

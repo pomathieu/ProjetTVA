@@ -1,5 +1,5 @@
 
-package vatjava;
+package src.main.java.vatjava;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
