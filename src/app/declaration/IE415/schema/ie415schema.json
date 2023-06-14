@@ -1,0 +1,2646 @@
+{
+    "CC415BType": {
+      "type": "object",
+      "properties": {
+        "ImportOperation": {
+          "$ref": "#/components/schemas/MCciOperationType04FR"
+        },
+        "Authorisation": {
+          "type": "array",
+          "maxItems": 15,
+          "items": {
+            "$ref": "#/components/schemas/MAuthorisationType04"
+          }
+        },
+        "CustomsOfficeOfPresentation": {
+          "$ref": "#/components/schemas/MPcoType"
+        },
+        "SupervisingCustomsOffice": {
+          "$ref": "#/components/schemas/MScoType"
+        },
+        "CustomsOfficesOfDischarge": {
+          "$ref": "#/components/schemas/CustomsOfficesOfDischargeType"
+        },
+        "Importer": {
+          "$ref": "#/components/schemas/MImporterType"
+        },
+        "Declarant": {
+          "$ref": "#/components/schemas/MDeclarantType"
+        },
+        "PersonProvidingAGuarantee": {
+          "$ref": "#/components/schemas/MPersonProvidingGuaranteeType"
+        },
+        "PersonPayingCustomsDuty": {
+          "$ref": "#/components/schemas/MPersonPayingCustomsDutyType"
+        },
+        "Representative": {
+          "$ref": "#/components/schemas/MRepresentativeType"
+        },
+        "OwnerOfTheGoods": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/OwnerOfTheGoodsType"
+          }
+        },
+        "Guarantee": {
+          "type": "array",
+          "maxItems": 9,
+          "items": {
+            "$ref": "#/components/schemas/MGuaranteeType"
+          }
+        },
+        "CurrencyExchange": {
+          "$ref": "#/components/schemas/MCurrencyExchangeType"
+        },
+        "DeferredPayment": {
+          "type": "array",
+          "maxItems": 9,
+          "items": {
+            "$ref": "#/components/schemas/MDeferredPaymentType"
+          }
+        },
+        "GoodsShipment": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 9999,
+          "items": {
+            "$ref": "#/components/schemas/MGoodsShipmentType05FR"
+          }
+        }
+      },
+      "required": [
+        "ImportOperation",
+        "CustomsOfficeOfPresentation",
+        "Importer",
+        "Declarant",
+        "GoodsShipment"
+      ]
+    },
+    "MCciOperationType04FR": {
+      "type": "object",
+      "description": "Opération d'importation",
+      "properties": {
+        "LRN": {
+          "type": "string",
+          "description": "Numéro de référence interne",
+          "maxLength": 22,
+          "pattern": "^[a-zA-Z0-9]{1,22}"
+        },
+        "declarationType": {
+          "type": "string",
+          "description": "Type de déclaration",
+          "maxLength": 5,
+          "pattern": "^[a-zA-Z0-9]{1,5}"
+        },
+        "additionalDeclarationType": {
+          "type": "string",
+          "description": "Type de déclaration supplémentaire",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "presentationNotificationEstimatedDateAndTime": {
+          "type": "string",
+          "description": "Date d'arrivée prévisionnelle",
+          "minLength": 19,
+          "maxLength": 19,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"
+        },
+        "languageCode": {
+          "type": "string",
+          "description": "Langue",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        }
+      },
+      "required": [
+        "LRN",
+        "declarationType",
+        "additionalDeclarationType",
+        "languageCode"
+      ]
+    },
+    "MAuthorisationType04": {
+      "type": "object",
+      "description": "Autorisation",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "type": {
+          "type": "string",
+          "description": "Autorisation / Type",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Autorisation / Numéro de référence",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        },
+        "holderOfTheAuthorisation": {
+          "type": "string",
+          "description": "Autorisation / Titulaire de l’autorisation",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "referenceNumber"
+      ]
+    },
+    "MPcoType": {
+      "type": "object",
+      "description": "Bureau de présentation",
+      "properties": {
+        "referenceNumber": {
+          "type": "string",
+          "description": "Bureau de présentation / Code bureau",
+          "minLength": 8,
+          "maxLength": 8,
+          "pattern": "^[A-Z]{2}[A-Z0-9]{6}"
+        }
+      },
+      "required": [
+        "referenceNumber"
+      ]
+    },
+    "MScoType": {
+      "type": "object",
+      "description": "Bureau de déclaration",
+      "properties": {
+        "referenceNumber": {
+          "type": "string",
+          "description": "Bureau de déclaration / Code bureau",
+          "minLength": 8,
+          "maxLength": 8,
+          "pattern": "^[A-Z]{2}[A-Z0-9]{6}"
+        }
+      },
+      "required": [
+        "referenceNumber"
+      ]
+    },
+    "CustomsOfficesOfDischargeType": {
+      "type": "object",
+      "description": "Bureau de douane d’apurement",
+      "properties": {
+        "referenceNumber": {
+          "type": "string",
+          "description": "Bureau de douane d'apurement /  Code bureau",
+          "minLength": 8,
+          "maxLength": 8,
+          "pattern": "^[A-Z]{2}[A-Z0-9]{6}"
+        }
+      },
+      "required": [
+        "referenceNumber"
+      ]
+    },
+    "MImporterType": {
+      "type": "object",
+      "description": "Importateur",
+      "properties": {
+        "identificationNumber": {
+          "$ref": "#/components/schemas/IdentificationNumber"
+        },
+        "name": {
+          "type": "string",
+          "description": "Importateur / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "Address": {
+          "$ref": "#/components/schemas/MAddressType01"
+        }
+      }
+    },
+    "MDeclarantType": {
+      "type": "object",
+      "description": "Déclarant",
+      "properties": {
+        "identificationNumber": {
+          "$ref": "#/components/schemas/IdentificationNumber"
+        },
+        "name": {
+          "type": "string",
+          "description": "Déclarant / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "Address": {
+          "$ref": "#/components/schemas/MAddressType01"
+        },
+        "ContactPerson": {
+          "$ref": "#/components/schemas/MContactPersonType"
+        }
+      },
+      "required": [
+        "identificationNumber",
+        "ContactPerson"
+      ]
+    },
+    "MPersonProvidingGuaranteeType": {
+      "type": "object",
+      "description": "Personne fournissant la ou les garantie(s)",
+      "properties": {
+        "identificationNumber": {
+          "$ref": "#/components/schemas/IdentificationNumber"
+        }
+      },
+      "required": [
+        "identificationNumber"
+      ]
+    },
+    "MPersonPayingCustomsDutyType": {
+      "type": "object",
+      "description": "Personne payant les droits de douane",
+      "properties": {
+        "identificationNumber": {
+          "$ref": "#/components/schemas/IdentificationNumber"
+        }
+      },
+      "required": [
+        "identificationNumber"
+      ]
+    },
+    "MRepresentativeType": {
+      "type": "object",
+      "description": "Représentant",
+      "properties": {
+        "identificationNumber": {
+          "$ref": "#/components/schemas/IdentificationNumber"
+        },
+        "status": {
+          "type": "string",
+          "description": "Représentant / Code du statut du représentant",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        },
+        "ContactPerson": {
+          "$ref": "#/components/schemas/MContactPersonType"
+        }
+      },
+      "required": [
+        "status",
+        "ContactPerson"
+      ]
+    },
+    "OwnerOfTheGoodsType": {
+      "type": "object",
+      "description": "Propriétaire des marchandises",
+      "properties": {
+        "identificationNumber": {
+          "$ref": "#/components/schemas/IdentificationNumber"
+        },
+        "name": {
+          "type": "string",
+          "description": "Propriétaire des marchandises / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "OwnerOfTheGoodsAddress": {
+          "type": "object",
+          "description": "Adresse du propriétaire des marchandises",
+          "$ref": "#/components/schemas/OwnerOfTheGoodsAddressType"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "MGuaranteeType": {
+      "type": "object",
+      "description": "Garantie",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "guaranteeType": {
+          "type": "string",
+          "description": "Type de la garantie / Type de la garantie",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z0-9]{1}"
+        },
+        "GuaranteeReference": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MGuaranteeReferenceType"
+          }
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "guaranteeType",
+        "GuaranteeReference"
+      ]
+    },
+    "MCurrencyExchangeType": {
+      "type": "object",
+      "description": "Unité monétaire",
+      "properties": {
+        "internalCurrencyUnit": {
+          "type": "string",
+          "description": "Unité monétaire interne",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z]{3}"
+        }
+      }
+    },
+    "MDeferredPaymentType": {
+      "type": "object",
+      "description": "Report de paiement",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "deferredPayment": {
+          "type": "string",
+          "description": "Report de paiement",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "deferredPayment"
+      ]
+    },
+    "MGoodsShipmentType05FR": {
+      "type": "object",
+      "description": "Données du segment général",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "natureOfTransaction": {
+          "type": "string",
+          "description": "Nature de la transaction",
+          "maxLength": 2,
+          "pattern": "^[0-9]{1,2}"
+        },
+        "totalAmountInvoiced": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Montant total facturé"
+        },
+        "invoiceCurrency": {
+          "type": "string",
+          "description": "Devise facture",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z]{3}"
+        },
+        "dateOfAcceptance": {
+          "type": "string",
+          "description": "Date d’acceptation",
+          "minLength": 19,
+          "maxLength": 19,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"
+        },
+        "exchangeRate": {
+          "description": "Taux de change",
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 999999999999,
+          "exclusiveMinimum": false
+        },
+        "AdditionalSupplyChainActor": {
+          "type": "array",
+          "description": "Autres acteurs de la chaîne d’approvisionnement",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalSupplyChainActorType"
+          }
+        },
+        "Buyer": {
+          "$ref": "#/components/schemas/MBuyerType"
+        },
+        "Seller": {
+          "$ref": "#/components/schemas/MSellerType"
+        },
+        "Consignee": {
+          "$ref": "#/components/schemas/ConsigneeType"
+        },
+        "Exporter": {
+          "$ref": "#/components/schemas/MExporterType"
+        },
+        "DeliveryTerms": {
+          "$ref": "#/components/schemas/MDeliveryTermsType"
+        },
+        "CountryOfDispatch": {
+          "$ref": "#/components/schemas/MCountryOfDispatchType"
+        },
+        "Destination": {
+          "$ref": "#/components/schemas/MDestinationType"
+        },
+        "Warehouse": {
+          "$ref": "#/components/schemas/MWarehouseType"
+        },
+        "FirstPlaceOfUseOrProcessing": {
+          "$ref": "#/components/schemas/FirstPlaceOfUseOrProcessingType"
+        },
+        "PeriodForDischarge": {
+          "$ref": "#/components/schemas/PeriodForDischargeType"
+        },
+        "BillOfDischarge": {
+          "$ref": "#/components/schemas/BillOfDischargeType"
+        },
+        "DetailsOfPlannedActivities": {
+          "$ref": "#/components/schemas/DetailsOfPlannedActivitiesType"
+        },
+        "IdentificationOfGoods": {
+          "type": "array",
+          "maxItems": 999,
+          "items": {
+            "$ref": "#/components/schemas/IdentificationOfGoodsType"
+          }
+        },
+        "ProcessedProducts": {
+          "type": "array",
+          "maxItems": 999,
+          "items": {
+            "$ref": "#/components/schemas/ProcessedProductsType"
+          }
+        },
+        "PreviousDocument": {
+          "type": "array",
+          "description": "Document précédent",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MPreviousDocumentType04"
+          }
+        },
+        "SupportingDocument": {
+          "type": "array",
+          "description": "Document d’accompagnement",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MSupportingDocumentType02"
+          }
+        },
+        "AdditionalReference": {
+          "type": "array",
+          "description": "Référence complémentaire",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalReferenceType"
+          }
+        },
+        "AdditionalInformation": {
+          "type": "array",
+          "description": "Mentions spéciales",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalInformationType"
+          }
+        },
+        "AdditionsAndDeduction": {
+          "type": "array",
+          "description": "Ajouts et déductions",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionsAndDeductionsType"
+          }
+        },
+        "AdditionalFiscalReference": {
+          "type": "array",
+          "description": "Référence fiscale complémentaire",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalFiscalReferenceType"
+          }
+        },
+        "Consignment": {
+          "$ref": "#/components/schemas/MConsignmentType01"
+        },
+        "GoodsShipmentItem": {
+          "type": "array",
+          "description": "Articles de marchandises",
+          "minItems": 1,
+          "maxItems": 999,
+          "items": {
+            "$ref": "#/components/schemas/MGoodsShipmentItemType04FR"
+          }
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "Consignment",
+        "GoodsShipmentItem"
+      ]
+    },
+    "CcQualifier": {
+      "type": "string",
+      "description": "DCC - Code pays",
+      "minLength": 2,
+      "maxLength": 2,
+      "pattern": "^[A-Z]{2}"
+    },
+    "SequenceNrContentType": {
+      "type": "string",
+      "description": "Numéro de séquence",
+      "maxLength": 5,
+      "pattern": "^[0-9]{1,5}"
+    },
+    "IdentificationNumber": {
+      "type": "string",
+      "description": "Numéro d’identification",
+      "maxLength": 17,
+      "pattern": "^[a-zA-Z0-9]{1,17}"
+    },
+    "MContactPersonType": {
+      "type": "object",
+      "description": "Personne à contacter",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Personne à contacter / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Personne à contacter / Numéro de téléphone",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        },
+        "eMailAddress": {
+          "type": "string",
+          "description": "Personne à contacter / Adresse e-mail",
+          "maxLength": 256,
+          "pattern": "^[^@]+@[^\\.]+\\..+"
+        }
+      },
+      "required": [
+        "name",
+        "phoneNumber",
+        "eMailAddress"
+      ]
+    },
+    "MAddressType01": {
+      "type": "object",
+      "description": "Adresse",
+      "properties": {
+        "streetAndNumber": {
+          "type": "string",
+          "description": "Adresse / Numéro et rue",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Adresse / Code postal",
+          "maxLength": 17,
+          "pattern": "^.{1,17}"
+        },
+        "city": {
+          "type": "string",
+          "description": "Adresse / Ville",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        },
+        "country": {
+          "type": "string",
+          "description": "Adresse / Pays",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        }
+      },
+      "required": [
+        "streetAndNumber",
+        "city",
+        "country"
+      ]
+    },
+    "OwnerOfTheGoodsAddressType": {
+      "type": "object",
+      "description": "Adresse",
+      "properties": {
+        "streetAndNumber": {
+          "type": "string",
+          "description": "Adresse / Numéro et rue",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Adresse / Code postal",
+          "maxLength": 9,
+          "pattern": "^.{1,9}"
+        },
+        "city": {
+          "type": "string",
+          "description": "Adresse / Ville",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        },
+        "country": {
+          "type": "string",
+          "description": "Adresse / Pays",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        }
+      },
+      "required": [
+        "streetAndNumber",
+        "city",
+        "country"
+      ]
+    },
+    "FreeTextDescriptionType": {
+      "type": "object",
+      "description": "Texte libre - Description",
+      "properties": {
+        "streetAndNumber": {
+          "type": "string",
+          "description": "Texte libre - Description / Numéro et rue",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Texte libre - Description / Code postal",
+          "maxLength": 9,
+          "pattern": "^.{1,9}"
+        },
+        "city": {
+          "type": "string",
+          "description": "Texte libre - Description / Ville",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        }
+      },
+      "required": [
+        "streetAndNumber",
+        "city"
+      ]
+    },
+    "FreeTextDescriptionSIType": {
+      "type": "object",
+      "description": "Texte libre - Description",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Texte libre - Description / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "streetAndNumber": {
+          "type": "string",
+          "description": "Texte libre - Description / Numéro et rue",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Texte libre - Description / Code postal",
+          "maxLength": 9,
+          "pattern": "^.{1,9}"
+        },
+        "city": {
+          "type": "string",
+          "description": "Texte libre - Description / Ville",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        }
+      },
+      "required": [
+        "name",
+        "postcode",
+        "city"
+      ]
+    },
+    "MGuaranteeReferenceType": {
+      "type": "object",
+      "description": "Référence de la garantie",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "GRN": {
+          "type": "string",
+          "description": "Référence de la garantie / Numéro de référence de la garantie (GRN)",
+          "minLength": 4,
+          "maxLength": 24,
+          "pattern": "^[A-Z0-9]{4,24}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        },
+        "accessCode": {
+          "type": "string",
+          "description": "Référence de la garantie / Code d’accès",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        },
+        "currencyCode": {
+          "type": "string",
+          "description": "Référence de la garantie / Devise",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z]{3}"
+        },
+        "amountToBeCovered": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Référence de la garantie / Montant à couvrir"
+        },
+        "otherGuaranteeReference": {
+          "type": "string",
+          "description": "Référence de la garantie / Autre référence de garantie",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        },
+        "CustomsOfficeOfGuarantee": {
+          "$ref": "#/components/schemas/MCustomsOfficeOfGuaranteeType"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "currencyCode",
+        "amountToBeCovered"
+      ]
+    },
+    "MCustomsOfficeOfGuaranteeType": {
+      "type": "object",
+      "description": "Référence de la garantie / Bureau de douane de garantie",
+      "properties": {
+        "referenceNumber": {
+          "type": "string",
+          "description": "Référence de la garantie / Code bureau de douane de garantie",
+          "minLength": 8,
+          "maxLength": 8,
+          "pattern": "^[A-Z]{2}[A-Z0-9]{6}"
+        }
+      },
+      "required": [
+        "referenceNumber"
+      ]
+    },
+    "MAdditionalSupplyChainActorType": {
+      "type": "object",
+      "description": "Autres acteurs de la chaîne logistique",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "role": {
+          "type": "string",
+          "description": "Autres acteurs de la chaîne logistique / Rôle",
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z]{1,3}"
+        },
+        "identificationNumber": {
+          "type": "string",
+          "description": "Autres acteurs de la chaîne logistique / Numéro d'identifiant",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "role",
+        "identificationNumber"
+      ]
+    },
+    "MBuyerType": {
+      "type": "object",
+      "description": "Acheteur",
+      "properties": {
+        "identificationNumber": {
+          "type": "string",
+          "description": "Acheteur / Numéro d’identification",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        },
+        "name": {
+          "type": "string",
+          "description": "Acheteur / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "Address": {
+          "$ref": "#/components/schemas/MAddressType01"
+        }
+      }
+    },
+    "MSellerType": {
+      "type": "object",
+      "description": "Vendeur",
+      "properties": {
+        "identificationNumber": {
+          "type": "string",
+          "description": "Vendeur / Numéro d’identification",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        },
+        "name": {
+          "type": "string",
+          "description": "Vendeur / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "Address": {
+          "$ref": "#/components/schemas/MAddressType01"
+        }
+      }
+    },
+    "ConsigneeType": {
+      "type": "object",
+      "description": "Destinataire",
+      "properties": {
+        "identificationNumber": {
+          "type": "string",
+          "description": "Destinataire / Numéro d’identification",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        },
+        "name": {
+          "type": "string",
+          "description": "Destinataire / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "Address": {
+          "$ref": "#/components/schemas/MAddressType01"
+        }
+      }
+    },
+    "MExporterType": {
+      "type": "object",
+      "description": "Exportateur",
+      "properties": {
+        "identificationNumber": {
+          "type": "string",
+          "description": "Exportateur / Numéro d’identification",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        },
+        "name": {
+          "type": "string",
+          "description": "Exportateur / Nom",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "Address": {
+          "$ref": "#/components/schemas/MAddressType01"
+        }
+      }
+    },
+    "MDeliveryTermsType": {
+      "type": "object",
+      "description": "Conditions de livraison",
+      "properties": {
+        "incotermCode": {
+          "type": "string",
+          "description": "Conditions de livraison / INCOTERM",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z]{3}"
+        },
+        "UNLOCODE": {
+          "type": "string",
+          "description": "Conditions de livraison / LOCODE ONU",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        },
+        "location": {
+          "type": "string",
+          "description": "Conditions de livraison / Lieu INCOTERM",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        },
+        "country": {
+          "type": "string",
+          "description": "Conditions de livraison / Pays",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        },
+        "text": {
+          "type": "string",
+          "description": "Conditions de livraison / Texte",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        }
+      },
+      "required": [
+        "incotermCode"
+      ]
+    },
+    "MCountryOfDispatchType": {
+      "type": "object",
+      "description": "Pays d'expédition",
+      "properties": {
+        "countryOfDispatch": {
+          "type": "string",
+          "description": "Code pays d’expédition",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        }
+      },
+      "required": [
+        "countryOfDispatch"
+      ]
+    },
+    "MDestinationType": {
+      "type": "object",
+      "description": "Destination",
+      "properties": {
+        "countryOfDestination": {
+          "type": "string",
+          "description": "Code pays de destination",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        },
+        "regionOfDestination": {
+          "type": "string",
+          "description": "Région de destination",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        }
+      }
+    },
+    "MWarehouseType": {
+      "type": "object",
+      "description": "Entrepôt",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Entrepôt / Type",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Entrepôt / Identification de l’entrepôt",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        }
+      },
+      "required": [
+        "type",
+        "identifier"
+      ]
+    },
+    "FirstPlaceOfUseOrProcessingType": {
+      "type": "object",
+      "description": "Premier lieu de perfectionnement, de transformation ou d’utilisation",
+      "properties": {
+        "typeOfLocation": {
+          "type": "string",
+          "description": "Premier lieu de perfectionnement, de transformation ou d’utilisation  / Type de lieu",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "qualifierOfTheIdentification": {
+          "type": "string",
+          "description": "Premier lieu de perfectionnement, de transformation ou d’utilisation  / Qualifiant d'identification",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "country": {
+          "type": "string",
+          "description": "Premier lieu de perfectionnement, de transformation ou d’utilisation / Code pays",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z]{2}"
+        },
+        "Coded": {
+          "$ref": "#/components/schemas/CodedType"
+        },
+        "FreeTextDescription": {
+          "$ref": "#/components/schemas/FreeTextDescriptionType"
+        }
+      },
+      "required": [
+        "typeOfLocation",
+        "qualifierOfTheIdentification",
+        "country"
+      ]
+    },
+    "CodedType": {
+      "type": "object",
+      "description": "Codé",
+      "properties": {
+        "identificationOfLocation": {
+          "type": "string",
+          "description": "Codé / Identifiant du lieu",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        },
+        "additionaldentifier": {
+          "type": "number",
+          "description": "Codé / Identifiant additionnel",
+          "maxLength": 3,
+          "pattern": "^[0-9]{1,3}"
+        }
+      },
+      "required": [
+        "identificationOfLocation",
+        "additionaldentifier"
+      ]
+    },
+    "PeriodForDischargeType": {
+      "type": "object",
+      "description": "Délai d’apurement",
+      "properties": {
+        "periodForDischargePeriod": {
+          "type": "number",
+          "description": "Délai d’apurement / Durée",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        },
+        "periodForDischargeIndicator": {
+          "type": "number",
+          "description": "Délai d’apurement / Indicateur",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[0-9]{2}"
+        },
+        "periodForDischargeFreeText": {
+          "type": "string",
+          "description": "Délai d’apurement / Texte libre",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        }
+      },
+      "required": [
+        "periodForDischargePeriod",
+        "periodForDischargeIndicator"
+      ]
+    },
+    "BillOfDischargeType": {
+      "type": "object",
+      "description": "Décompte d’apurement",
+      "properties": {
+        "indicator": {
+          "type": "number",
+          "description": "Décompte d’apurement / Indicateur",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        },
+        "deadline": {
+          "type": "number",
+          "description": "Décompte d’apurement / Durée",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[0-9]{2}"
+        },
+        "freeText": {
+          "type": "string",
+          "description": "Décompte d’apurement / Texte libre",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        }
+      },
+      "required": [
+        "indicator",
+        "deadline"
+      ]
+    },
+    "DetailsOfPlannedActivitiesType": {
+      "type": "object",
+      "description": "Détail des activités envisagées",
+      "properties": {
+        "freeText": {
+          "type": "string",
+          "description": "Détail des activités envisagées / Texte libre",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        }
+      },
+      "required": [
+        "freeText"
+      ]
+    },
+    "IdentificationOfGoodsType": {
+      "type": "object",
+      "description": "Identification des marchandises",
+      "properties": {
+        "code": {
+          "type": "number",
+          "description": "Identification des marchandises / Code",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        },
+        "freeText": {
+          "type": "string",
+          "description": "Identification des marchandises / Texte libre",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        }
+      },
+      "required": [
+        "code"
+      ]
+    },
+    "ProcessedProductsType": {
+      "type": "object",
+      "description": "Produits transformés",
+      "properties": {
+        "descriptionOfGoods": {
+          "type": "string",
+          "description": "Produits transformés / Désignation des marchandises",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        },
+        "ComodityCode": {
+          "$ref": "#/components/schemas/PPcomodityCodeType"
+        },
+        "RateOfYield": {
+          "$ref": "#/components/schemas/RateOfYieldType"
+        }
+      },
+      "required": [
+        "descriptionOfGoods",
+        "ComodityCode"
+      ]
+    },
+    "PPcomodityCodeType": {
+      "type": "object",
+      "description": "Code des marchandises",
+      "properties": {
+        "harmonizedSystemSubheadingCode": {
+          "type": "string",
+          "description": "Code des marchandises / Code de sous-position du système harmonisé",
+          "minLength": 6,
+          "maxLength": 6,
+          "pattern": "^[a-zA-Z0-9]{6}"
+        },
+        "combinedNomenclatureCode": {
+          "type": "string",
+          "description": "Code des marchandises / Nomenclature combinée",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z0-9]{2}"
+        }
+      },
+      "required": [
+        "harmonizedSystemSubheadingCode",
+        "combinedNomenclatureCode"
+      ]
+    },
+    "RateOfYieldType": {
+      "type": "object",
+      "description": "Taux de rendement",
+      "properties": {
+        "freeText": {
+          "type": "string",
+          "description": "Taux de rendement / Texte libre",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        }
+      },
+      "required": [
+        "freeText"
+      ]
+    },
+    "MPreviousDocumentType04": {
+      "type": "object",
+      "description": "Document précédent",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "type": {
+          "type": "string",
+          "description": "Document précédent / Type",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Document précédent / Numéro de référence",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "type",
+        "referenceNumber"
+      ]
+    },
+    "MSupportingDocumentType02": {
+      "type": "object",
+      "description": "Document d’accompagnement",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "type": {
+          "type": "string",
+          "description": "Document d’accompagnement / Type",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Document d’accompagnement / Numéro de référence",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "documentLineItemNumber": {
+          "type": "string",
+          "description": "Document d’accompagnement / Numéro de ligne dans le document",
+          "maxLength": 5,
+          "pattern": "^[1-9]{1}[0-9]{0,4}"
+        },
+        "issuingAuthorityName": {
+          "type": "string",
+          "description": "Document d’accompagnement / Autorité de délivrance",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "dateOfValidity": {
+          "type": "string",
+          "description": "Document d’accompagnement / Date de validité",
+          "minLength": 10,
+          "maxLength": 10,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "type",
+        "referenceNumber"
+      ]
+    },
+    "MAdditionalReferenceType": {
+      "type": "object",
+      "description": "Référence complémentaire",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "type": {
+          "type": "string",
+          "description": "Référence complémentaire / Type",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Référence complémentaire / Numéro de référence",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "type"
+      ]
+    },
+    "MAdditionalInformationType": {
+      "type": "object",
+      "description": "Mentions spéciales",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "code": {
+          "type": "string",
+          "description": "Mentions spéciales / code",
+          "minLength": 5,
+          "maxLength": 5,
+          "pattern": "^[a-zA-Z0-9]{5}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        },
+        "text": {
+          "type": "string",
+          "description": "Mentions spéciales / Informations complémentaires",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "code"
+      ]
+    },
+    "MAdditionsAndDeductionsType": {
+      "type": "object",
+      "description": "Ajouts et déductions",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "code": {
+          "type": "string",
+          "description": "Ajouts et déductions / Code",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z]{2}"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Ajouts et déductions / Devise",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z]{3}"
+        },
+        "amount": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Ajouts et déduction / Montant"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "code",
+        "currency",
+        "amount"
+      ]
+    },
+    "MAdditionalFiscalReferenceType": {
+      "type": "object",
+      "description": "Référence fiscale complémentaire",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "role": {
+          "type": "string",
+          "description": "Référence fiscale complémentaire / Rôle",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z0-9]{3}"
+        },
+        "fiscalReferenceIdentificationNumber": {
+          "type": "string",
+          "description": "Référence fiscale complémentaire / Numéro d’identification fiscale",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "role",
+        "fiscalReferenceIdentificationNumber"
+      ]
+    },
+    "MConsignmentType01": {
+      "type": "object",
+      "description": "Envoi",
+      "properties": {
+        "containerIndicator": {
+          "type": "string",
+          "description": "Transport en conteneur",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        },
+        "inlandModeOfTransport": {
+          "type": "string",
+          "description": "Mode de transport intérieur",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        },
+        "modeOfTransportAtTheBorder": {
+          "type": "string",
+          "description": "Mode de transport à la frontière",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        },
+        "grossMass": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Masse brute totale"
+        },
+        "referenceNumberUCR": {
+          "type": "string",
+          "description": "Numéro de référence RUE",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        },
+        "TransportEquipment": {
+          "type": "array",
+          "maxItems": 9999,
+          "items": {
+            "$ref": "#/components/schemas/MTransportEquipmentType"
+          }
+        },
+        "LocationOfGoods": {
+          "$ref": "#/components/schemas/MLocationOfGoodsType01"
+        },
+        "ArrivalTransportMeans": {
+          "$ref": "#/components/schemas/MArrivalTransportMeansType"
+        },
+        "ActiveBorderTransportMeans": {
+          "$ref": "#/components/schemas/MActiveBorderTransportMeansType"
+        },
+        "TransportDocument": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MTransportDocumentType"
+          }
+        }
+      },
+      "required": [
+        "containerIndicator"
+      ]
+    },
+    "MTransportEquipmentType": {
+      "type": "object",
+      "description": "Equipement de transport",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "containerIdentificationNumber": {
+          "type": "string",
+          "description": "Equipement de transport / Numéro du conteneur",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        },
+        "GoodsReference": {
+          "type": "array",
+          "maxItems": 9999,
+          "items": {
+            "$ref": "#/components/schemas/MGoodsReferenceType"
+          }
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "containerIdentificationNumber"
+      ]
+    },
+    "MGoodsReferenceType": {
+      "type": "object",
+      "description": "Référence des marchandises",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "declarationGoodsItemNumber": {
+          "type": "string",
+          "description": "Référence des marchandises / Numéro d’article de marchandises dans la déclaration",
+          "maxLength": 5,
+          "pattern": "^[1-9]{1}[0-9]{0,4}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "declarationGoodsItemNumber"
+      ]
+    },
+    "MLocationOfGoodsType01": {
+      "type": "object",
+      "description": "Localisation des marchandises",
+      "properties": {
+        "typeOfLocation": {
+          "type": "string",
+          "description": "Localisation des marchandises / Type de lieu",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "qualifierOfIdentification": {
+          "type": "string",
+          "description": "Localisation des marchandises / Code d’identification",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "authorisationNumber": {
+          "type": "string",
+          "description": "Localisation des marchandises / Numéro d’autorisation",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        },
+        "additionalIdentifier": {
+          "type": "string",
+          "description": "Localisation des marchandises / Identifiant additionnel",
+          "maxLength": 8,
+          "pattern": "^[a-zA-Z0-9]{1,8}"
+        },
+        "UNLOCODE": {
+          "type": "string",
+          "description": "Localisation des marchandises / LOCODE ONU",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        },
+        "CustomsOffice": {
+          "$ref": "#/components/schemas/MCustomsOfficeType"
+        },
+        "GNSS": {
+          "$ref": "#/components/schemas/MGpsType"
+        },
+        "EconomicOperator": {
+          "$ref": "#/components/schemas/MEconomicOperatorType"
+        },
+        "Address": {
+          "$ref": "#/components/schemas/MAddressType01"
+        },
+        "PostcodeAddress": {
+          "$ref": "#/components/schemas/MAddressType02"
+        }
+      },
+      "required": [
+        "typeOfLocation",
+        "qualifierOfIdentification"
+      ]
+    },
+    "MCustomsOfficeType": {
+      "type": "object",
+      "description": "Bureau de douane",
+      "properties": {
+        "referenceNumber": {
+          "type": "string",
+          "description": "Bureau de douane / Code bureau",
+          "minLength": 8,
+          "maxLength": 8,
+          "pattern": "^[A-Z]{2}[A-Z0-9]{6}"
+        }
+      },
+      "required": [
+        "referenceNumber"
+      ]
+    },
+    "MGpsType": {
+      "type": "object",
+      "description": "GNSS",
+      "properties": {
+        "latitude": {
+          "type": "string",
+          "description": "GNSS / Latitude",
+          "maxLength": 17,
+          "pattern": "^[+-]?([0-8]?[0-9]\\.[0-9]{5,7}|90.000000?0?)"
+        },
+        "longitude": {
+          "type": "string",
+          "description": "GNSS / Longitude",
+          "maxLength": 17,
+          "pattern": "^[+-]?([0-8]?[0-9]\\.[0-9]{5,7}|90.000000?0?)"
+        }
+      },
+      "required": [
+        "latitude",
+        "longitude"
+      ]
+    },
+    "MEconomicOperatorType": {
+      "type": "object",
+      "description": "Opérateur économique",
+      "properties": {
+        "identificationNumber": {
+          "type": "string",
+          "description": "Opérateur économique / Numéro d'identifiant",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        }
+      },
+      "required": [
+        "identificationNumber"
+      ]
+    },
+    "MAddressType02": {
+      "type": "object",
+      "description": "Adresse postale",
+      "properties": {
+        "houseNumber": {
+          "type": "string",
+          "description": "Adresse postale / Numéro",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "Adresse postale / Code postal",
+          "maxLength": 17,
+          "pattern": "^.{1,17}"
+        },
+        "country": {
+          "type": "string",
+          "description": "Adresse postale / Pays",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        }
+      },
+      "required": [
+        "postcode",
+        "country"
+      ]
+    },
+    "MArrivalTransportMeansType": {
+      "type": "object",
+      "description": "Mode de transport à l’arrivée",
+      "properties": {
+        "typeOfIdentification": {
+          "type": "string",
+          "description": "Mode de transport à l’arrivée / Type d’identification",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[0-9]{2}"
+        },
+        "identificationNumber": {
+          "type": "string",
+          "description": "Mode de transport à l’arrivée / Numéro d'identification",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        }
+      },
+      "required": [
+        "typeOfIdentification",
+        "identificationNumber"
+      ]
+    },
+    "MActiveBorderTransportMeansType": {
+      "type": "object",
+      "description": "Mode de transport actif à la frontière",
+      "properties": {
+        "nationality": {
+          "type": "string",
+          "description": "Mode de transport actif à la frontière / Nationalité",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        }
+      },
+      "required": [
+        "nationality"
+      ]
+    },
+    "MTransportDocumentType": {
+      "type": "object",
+      "description": "Document de transport",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "type": {
+          "type": "string",
+          "description": "Document de transport / Type",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Document de transport / Numéro de référence",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "type",
+        "referenceNumber"
+      ]
+    },
+    "MGoodsShipmentItemType04FR": {
+      "type": "object",
+      "description": "Articles de marchandises",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "declarationGoodsItemNumber": {
+          "type": "string",
+          "description": "Numéro d'article de marchandise",
+          "maxLength": 5,
+          "pattern": "^[1-9]{1}[0-9]{0,4}"
+        },
+        "statisticalValue": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Valeur statistique"
+        },
+        "natureOfTransaction": {
+          "type": "string",
+          "description": "Nature de la transaction",
+          "maxLength": 2,
+          "pattern": "^[0-9]{1,2}"
+        },
+        "referenceNumberUCR": {
+          "type": "string",
+          "description": "Numéro de référence RUE",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        },
+        "dateOfAcceptance": {
+          "type": "string",
+          "description": "Date d’acceptation",
+          "minLength": 19,
+          "maxLength": 19,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"
+        },
+        "Authorisation": {
+          "type": "array",
+          "maxItems": 15,
+          "items": {
+            "$ref": "#/components/schemas/MAuthorisationType02"
+          }
+        },
+        "Procedure": {
+          "$ref": "#/components/schemas/MProcedureType02"
+        },
+        "AdditionalSupplyChainActor": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalSupplyChainActorType"
+          }
+        },
+        "Buyer": {
+          "$ref": "#/components/schemas/MBuyerType"
+        },
+        "Seller": {
+          "$ref": "#/components/schemas/MSellerType"
+        },
+        "Consignee": {
+          "$ref": "#/components/schemas/ConsigneeType"
+        },
+        "Exporter": {
+          "$ref": "#/components/schemas/MExporterType"
+        },
+        "Origin": {
+          "$ref": "#/components/schemas/MOriginType"
+        },
+        "CountryOfDispatch": {
+          "$ref": "#/components/schemas/MCountryOfDispatchType"
+        },
+        "Destination": {
+          "$ref": "#/components/schemas/MDestinationType"
+        },
+        "Commodity": {
+          "$ref": "#/components/schemas/MCommodityType04FR"
+        },
+        "CalculationOfTheAmountOfTheImportDutyInAccordanceWithArticle86_3OfTheCode": {
+          "$ref": "#/components/schemas/CalculationOfTheAmountOfTheImportDutyInAccordanceWithArticle86_3OfTheCodeType"
+        },
+        "IdentificationOfGoods": {
+          "type": "array",
+          "maxItems": 999,
+          "items": {
+            "$ref": "#/components/schemas/IdentificationOfGoodsType"
+          }
+        },
+        "ProcessedProducts": {
+          "type": "array",
+          "maxItems": 999,
+          "items": {
+            "$ref": "#/components/schemas/ProcessedProductsType"
+          }
+        },
+        "EconomicConditions": {
+          "type": "array",
+          "maxItems": 999,
+          "items": {
+            "$ref": "#/components/schemas/EconomicConditionsType"
+          }
+        },
+        "PlacesOfProcessingOrUse": {
+          "type": "array",
+          "maxItems": 999,
+          "items": {
+            "$ref": "#/components/schemas/PlacesOfProcessingOrUseType"
+          }
+        },
+        "Packaging": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MPackagingType01"
+          }
+        },
+        "PreviousDocument": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MPreviousDocumentType03"
+          }
+        },
+        "SupportingDocument": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MSupportingDocumentType01FR"
+          }
+        },
+        "TransportDocument": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MTransportDocumentType"
+          }
+        },
+        "AdditionalReference": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalReferenceType"
+          }
+        },
+        "AdditionalInformation": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalInformationType"
+          }
+        },
+        "CustomsValuation": {
+          "$ref": "#/components/schemas/MCustomsValuationType"
+        },
+        "ValuationAdjustment": {
+          "$ref": "#/components/schemas/MValuationAdjustmentType"
+        },
+        "AdditionalFiscalReference": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalFiscalReferenceType"
+          }
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "declarationGoodsItemNumber",
+        "Procedure",
+        "Commodity",
+        "Packaging"
+      ]
+    },
+    "CalculationOfTheAmountOfTheImportDutyInAccordanceWithArticle86_3OfTheCodeType": {
+      "type": "object",
+      "description": "Calcul du montant des droits à l’importation en accord avec l'article 86§3 du CDU",
+      "properties": {
+        "indicator": {
+          "type": "number",
+          "description": "Calcul du montant des droits à l’importation en accord avec l'article 86§3 du CDU  / Indicateur",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        }
+      },
+      "required": [
+        "indicator"
+      ]
+    },
+    "MAuthorisationType02": {
+      "type": "object",
+      "description": "Autorisation",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "type": {
+          "type": "string",
+          "description": "Autorisation / Type",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Autorisation / Numéro de référence",
+          "maxLength": 35,
+          "pattern": "^[a-zA-Z0-9]{1,35}"
+        },
+        "holderOfTheAuthorisation": {
+          "type": "string",
+          "description": "Autorisation / Titulaire de l’autorisation",
+          "maxLength": 17,
+          "pattern": "^[a-zA-Z0-9]{1,17}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "referenceNumber"
+      ]
+    },
+    "MProcedureType02": {
+      "type": "object",
+      "description": "Régime",
+      "properties": {
+        "requestedProcedure": {
+          "type": "string",
+          "description": "Régime sollicité",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z0-9]{2}"
+        },
+        "previousProcedure": {
+          "type": "string",
+          "description": "Régime précédent",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z0-9]{2}"
+        },
+        "AdditionalProcedure": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MAdditionalProcedureType"
+          }
+        }
+      },
+      "required": [
+        "requestedProcedure",
+        "previousProcedure"
+      ]
+    },
+    "MAdditionalProcedureType": {
+      "type": "object",
+      "description": "Code régime complémentaire",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "additionalProcedure": {
+          "type": "string",
+          "description": "Code régime complémentaire",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z0-9]{3}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "additionalProcedure"
+      ]
+    },
+    "MOriginType": {
+      "type": "object",
+      "description": "Origine",
+      "properties": {
+        "countryOfOrigin": {
+          "type": "string",
+          "description": "Code pays d’origine",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}"
+        },
+        "countryOfPreferentialOrigin": {
+          "type": "string",
+          "description": "Code pays d’origine préférentielle",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        }
+      }
+    },
+    "MCommodityType04FR": {
+      "type": "object",
+      "description": "Marchandises",
+      "properties": {
+        "descriptionOfGoods": {
+          "type": "string",
+          "description": "Désignation des marchandises",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        },
+        "CUSCode": {
+          "type": "string",
+          "description": "Code CUS",
+          "minLength": 9,
+          "maxLength": 9,
+          "pattern": "^.{9}"
+        },
+        "quotaOrderNumber": {
+          "type": "string",
+          "description": "Numéro d’ordre du contingent",
+          "minLength": 6,
+          "maxLength": 6,
+          "pattern": "^[a-zA-Z0-9]{6}"
+        },
+        "CommodityCode": {
+          "$ref": "#/components/schemas/MCommodityCodeType03"
+        },
+        "GoodsMeasure": {
+          "$ref": "#/components/schemas/MGoodsMeasureType01FR"
+        },
+        "InvoiceLine": {
+          "$ref": "#/components/schemas/MInvoiceLineType"
+        },
+        "CalculationOfTaxes": {
+          "$ref": "#/components/schemas/MCalculationOfTaxesType01FR"
+        }
+      },
+      "required": [
+        "descriptionOfGoods",
+        "GoodsMeasure"
+      ]
+    },
+    "MCommodityCodeType03": {
+      "type": "object",
+      "description": "Code des marchandises",
+      "properties": {
+        "harmonizedSystemSubheadingCode": {
+          "type": "string",
+          "description": "Code des marchandises / Code de sous-position du système harmonisé",
+          "minLength": 6,
+          "maxLength": 6,
+          "pattern": "^[a-zA-Z0-9]{6}"
+        },
+        "combinedNomenclatureCode": {
+          "type": "string",
+          "description": "Code des marchandises / Nomenclature combinée",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z0-9]{2}"
+        },
+        "taricCode": {
+          "type": "string",
+          "description": "Code des marchandises / Code TARIC",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z0-9]{2}"
+        },
+        "TaricAdditionalCode": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MTaricAdditionalCodeType"
+          }
+        },
+        "NationalAdditionalCode": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MNationalAdditionalCodeType"
+          }
+        }
+      },
+      "required": [
+        "harmonizedSystemSubheadingCode",
+        "combinedNomenclatureCode"
+      ]
+    },
+    "MTaricAdditionalCodeType": {
+      "type": "object",
+      "description": "Code additionnel TARIC",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "taricAdditionalCode": {
+          "type": "string",
+          "description": "Code additionel TARIC",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "taricAdditionalCode"
+      ]
+    },
+    "MNationalAdditionalCodeType": {
+      "type": "object",
+      "description": "Code additionnel national",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "nationalAdditionalCode": {
+          "type": "string",
+          "description": "Code additionnel national",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "nationalAdditionalCode"
+      ]
+    },
+    "MGoodsMeasureType01FR": {
+      "type": "object",
+      "description": "Mesure des marchandises",
+      "properties": {
+        "grossMass": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Masse brute"
+        },
+        "netMass": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Masse nette"
+        },
+        "supplementaryUnits": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Unités supplémentaires (nombre)"
+        },
+        "nationalSupplementaryUnits": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Unités supplémentaires nationales (nombre)"
+        },
+        "nationalMeasurementUnitAndQualifier": {
+          "type": "string",
+          "description": "Unité de mesure nationales et qualificateur",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        }
+      }
+    },
+    "MInvoiceLineType": {
+      "type": "object",
+      "description": "Ligne de facture",
+      "properties": {
+        "itemAmountInvoiced": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Montant de l’article facturé"
+        }
+      },
+      "required": [
+        "itemAmountInvoiced"
+      ]
+    },
+    "MCalculationOfTaxesType01FR": {
+      "type": "object",
+      "description": "Calcul des impositions",
+      "properties": {
+        "preference": {
+          "type": "string",
+          "description": "Préférence",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[0-9]{3}"
+        },
+        "totalDutiesAndTaxesAmount": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "description": "Montant total des droits et impositions"
+        },
+        "DutiesAndTaxe": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MDutiesAndTaxesType01FR"
+          }
+        }
+      }
+    },
+    "MDutiesAndTaxesType01FR": {
+      "type": "object",
+      "description": "Droits et impositions",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "taxType": {
+          "type": "string",
+          "description": "Droits et impositions / Type de taxe",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z0-9]{3}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        },
+        "nationalTaxType": {
+          "type": "string",
+          "description": "Droits et impositions / Code taxe national",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        },
+        "payableTaxAmount": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "description": "Droits et impositions / Montant dû"
+        },
+        "methodOfPayment": {
+          "type": "string",
+          "description": "Droits et impositions / Moyen de paiement",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "TaxBase": {
+          "type": "array",
+          "maxItems": 99,
+          "items": {
+            "$ref": "#/components/schemas/MTaxBaseType01"
+          }
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "nationalTaxType",
+        "payableTaxAmount"
+      ]
+    },
+    "MTaxBaseType01": {
+      "type": "object",
+      "description": "Base d’imposition",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "taxRate": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 99999999999999999,
+          "description": "Base d’imposition / Quotité de la taxe"
+        },
+        "measurementUnitAndQualifier": {
+          "type": "string",
+          "description": "Base d’imposition / Unité de mesure et qualificateur",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        },
+        "quantity": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "description": "Base d’imposition / Quantité"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Base d’imposition / Devise",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z]{3}"
+        },
+        "amount": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "description": "Base d’imposition / Montant de la base de l'imposition"
+        },
+        "taxAmount": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "description": "Base d’imposition / Montant de l’imposition"
+        }
+      },
+      "required": [
+        "sequenceNumber"
+      ]
+    },
+    "EconomicConditionsType": {
+      "type": "object",
+      "description": "Conditions économiques",
+      "properties": {
+        "code": {
+          "type": "number",
+          "description": "Conditions économiques / Code",
+          "minLength": 1,
+          "maxLength": 2,
+          "pattern": "^[0-9]{1,2}"
+        },
+        "freeText": {
+          "type": "string",
+          "description": "Conditions économiques / Texte libre",
+          "maxLength": 512,
+          "pattern": "^.{1, 512}"
+        }
+      },
+      "required": [
+        "code"
+      ]
+    },
+    "PlacesOfProcessingOrUseType": {
+      "type": "object",
+      "description": "Lieu(x) de perfectionnement, de transformation ou d’utilisation",
+      "properties": {
+        "typeOfLocationCode": {
+          "type": "string",
+          "description": "Lieu(x) de perfectionnement, de transformation ou d’utilisation / Type de lieu",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "qualifierOfTheIdentification": {
+          "type": "string",
+          "description": "Lieu(x) de perfectionnement, de transformation ou d’utilisation / Qualifiant d'identification",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[a-zA-Z]{1}"
+        },
+        "country": {
+          "type": "string",
+          "description": "Lieu(x) de perfectionnement, de transformation ou d’utilisation / Code pays",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z]{2}"
+        },
+        "Coded": {
+          "$ref": "#/components/schemas/CodedType"
+        },
+        "FreeTextDescription": {
+          "$ref": "#/components/schemas/FreeTextDescriptionSIType"
+        }
+      },
+      "required": [
+        "typeOfLocationCode",
+        "qualifierOfTheIdentification",
+        "country"
+      ]
+    },
+    "MPackagingType01": {
+      "type": "object",
+      "description": "Conditionnement",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "typeOfPackages": {
+          "type": "string",
+          "description": "Conditionnement / Type de colis",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z0-9]{2}"
+        },
+        "numberOfPackages": {
+          "type": "string",
+          "description": "Conditionnement / Nombre de colis",
+          "maxLength": 8,
+          "pattern": "^[0-9]{1,8}"
+        },
+        "shippingMarks": {
+          "type": "string",
+          "description": "Conditionnement / Marques d'expédition",
+          "maxLength": 512,
+          "pattern": "^.{1,512}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "typeOfPackages"
+      ]
+    },
+    "MPreviousDocumentType03": {
+      "type": "object",
+      "description": "Document précédent",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "type": {
+          "type": "string",
+          "description": "Document précédent / Type",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Document précédent / Numéro de référence",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "typeOfPackages": {
+          "type": "string",
+          "description": "Document précédent / Type de colis",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[a-zA-Z0-9]{2}"
+        },
+        "numberOfPackages": {
+          "type": "string",
+          "description": "Document précédent / Nombre de colis",
+          "maxLength": 8,
+          "pattern": "^[0-9]{1,8}"
+        },
+        "measurementUnitAndQualifier": {
+          "type": "string",
+          "description": "Document précédent / Unité de mesure et qualificateur",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        },
+        "quantity": {
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "type": "number",
+          "description": "Document précédent / Quantité"
+        },
+        "goodsItemNumber": {
+          "type": "string",
+          "description": "Document précédent / Numéro de l’article de marchandise",
+          "maxLength": 5,
+          "pattern": "^[1-9]{1}[0-9]{0,4}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "type",
+        "referenceNumber",
+        "goodsItemIdentifier"
+      ]
+    },
+    "MSupportingDocumentType01FR": {
+      "type": "object",
+      "description": "Document d’accompagnement",
+      "properties": {
+        "sequenceNumber": {
+          "$ref": "#/components/schemas/SequenceNrContentType"
+        },
+        "type": {
+          "type": "string",
+          "description": "Document d’accompagnement / Type",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        },
+        "ccQualifier": {
+          "$ref": "#/components/schemas/CcQualifier"
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Document d’accompagnement / Numéro de référence",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "documentLineItemNumber": {
+          "type": "string",
+          "description": "Document d’accompagnement / Numéro de ligne dans le document",
+          "maxLength": 5,
+          "pattern": "^[1-9]{1}[0-9]{0,4}"
+        },
+        "issuingAuthorityName": {
+          "type": "string",
+          "description": "Document d’accompagnement / Autorité de délivrance",
+          "maxLength": 70,
+          "pattern": "^.{1,70}"
+        },
+        "dateOfValidity": {
+          "type": "string",
+          "description": "Document d’accompagnement / Date de validité",
+          "minLength": 10,
+          "maxLength": 10,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}"
+        },
+        "measurementUnitAndQualifier": {
+          "type": "string",
+          "description": "Document d’accompagnement / Unité de mesure et qualificateur",
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{1,4}"
+        },
+        "quantity": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Document d’accompagnement / Quantité"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Document d’accompagnement / Devise",
+          "minLength": 3,
+          "maxLength": 3,
+          "pattern": "^[a-zA-Z]{3}"
+        },
+        "amount": {
+          "type": "number",
+          "pattern": "^$",
+          "minimum": 0,
+          "maximum": 9999999999999999,
+          "exclusiveMinimum": false,
+          "description": "Document d’accompagnement / Montant"
+        },
+        "complementOfInformation": {
+          "type": "string",
+          "description": "Document d’accompagnement / Fiche d’imputation (information complémentaire)",
+          "maxLength": 35,
+          "pattern": "^.{1,35}"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "type",
+        "referenceNumber"
+      ]
+    },
+    "MCustomsValuationType": {
+      "type": "object",
+      "description": "Eléments de valeur",
+      "properties": {
+        "valuationMethod": {
+          "type": "string",
+          "description": "Méthode d’évaluation",
+          "minLength": 1,
+          "maxLength": 1,
+          "pattern": "^[0-9]{1}"
+        },
+        "AdditionsAndDeduction": {
+          "type": "array",
+          "maxItems": 99,
+          "description": "Ajouts et déductions",
+          "items": {
+            "$ref": "#/components/schemas/MAdditionsAndDeductionsType"
+          }
+        }
+      }
+    },
+    "MValuationAdjustmentType": {
+      "type": "object",
+      "description": "Ajustement de valeur",
+      "properties": {
+        "valuationIndicators": {
+          "type": "string",
+          "description": "Code indicateurs d’évaluation",
+          "minLength": 4,
+          "maxLength": 4,
+          "pattern": "^[a-zA-Z0-9]{4}"
+        }
+      },
+      "required": [
+        "valuationIndicators"
+      ]
+    }
+  }
